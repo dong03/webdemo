@@ -1,0 +1,71 @@
+$def with (resp)
+
+$def result_to_table(resp, row_num=15):
+    <table style="margin:auto; width:80%;">
+    $ config = resp['config']
+    $ reslist = resp['content']
+    $ col_num = config['columns']
+    $ index = 0
+    $for i in range(row_num):
+        <tr>
+        $for j, source in enumerate(['test_img', 'groundtruth', 'crcnn_448', 'gsrnet_448', 'mantranet448','mvssnet_casiav2_448','mvssnet_defacto_448', 'mvssnet_ps_448', 'mvssnet_fullset_448', 'crcnn_512', 'gsrnet_512', 'mantranet512','mvssnet_casiav2_512','mvssnet_defacto_512', 'mvssnet_ps_512', 'mvssnet_fullset_512']):
+            $ index = i
+            $if index>=len(reslist):
+                $break
+            $ imageid = reslist[index]['id']
+            $ url = '/%s/%s' % (source,imageid)
+            $ color = 'white'
+            $ dis = source
+            $if j == 0:
+                $ dis = reslist[index]['id']
+
+            <td style="vertical-align:top;"><img src="$url" width=$config['img_size'] style="border:5px solid $color"></img>
+            <div>$dis</div>
+            </td>
+        </tr>
+    </table>
+
+    
+$def result_to_html(resp):
+    $:result_to_table(resp, 100)
+
+    
+$def search_form(resp):
+    <form id="search_form"  method="post" action="search">
+    $if 0 == resp['status']:
+        <p><input placeholder="imageid"  type="text" id="input_query" name="query" class="focus" /> <input id="go" name="go" type="submit" value="Go!" /></p>
+    $else:
+        <p><input value="$resp['query']"  type="text" id="input_query" name="query" class="focus" /> <input id="go" name="go" type="submit" value="Go!" /></p>
+    </form>
+        
+
+<html>
+<head>
+<link rel="stylesheet" href="/static/basic.css" type="text/css" media="screen" charset="utf-8"/>
+<script type="text/javascript" src="/static/jquery.js"></script>
+
+<script type="text/javascript">
+
+jQuery(document).ready(function(){
+    jQuery('#search_form').submit(function(e){
+        var input = jQuery.trim( jQuery('#input_query').val() );
+        if (!input) {
+            e.preventDefault();
+        }
+        else {
+            jQuery('#input_query').val(input)
+        }
+    });
+});
+
+</script>
+    
+</head>
+
+<body>
+
+
+$:search_form(resp)
+$:result_to_html(resp)
+
+</body>

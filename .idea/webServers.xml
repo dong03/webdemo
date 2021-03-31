@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="459f4dd9-50bc-44a6-839b-d5abbc4dab46" name="dongchengbo@hz.newsverify.com:22 password (2)">
+        <fileTransfer rootFolder="/data_activate/dongchengbo/" accessType="SFTP" host="hz.newsverify.com" port="22" sshConfigId="fc9d7c28-60c3-4b17-8b59-38e367305eb1" sshConfig="dongchengbo@hz.newsverify.com:22 password">
+          <advancedOptions>
+            <advancedOptions controlEncoding="utf-8" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

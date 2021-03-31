@@ -1,0 +1,9 @@
+{
+ "max_hits": 50,
+ "img_size": 250,
+ "columns": 15,
+ "anno_file": "",
+ "pred_file": "/data/lixirong/VisualSearch/faceforensics_benchmark_retina_face/pred/faceforensics_c23_cxr_train_retinaface/faceforensics_c23_cxr_val_retinaface/conceptsrealfake.txt/resnet50_pretrained_balance_224_f1/run_0/results.txt"
+}
+
+
