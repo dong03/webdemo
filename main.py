@@ -22,18 +22,19 @@ from images import *
 #     'mvssnet_resize512_casia','mvssnet_resize512_defacto','mvssnet_resize512_fullset',
 #     'mvssnet_resize1024_casia','mvssnet_resize1024_defacto','mvssnet_resize1024_fullset'
 # ]
-# types = [
-#     'ori', 'mask', 'tradition',
-#     'mvssnet_patch_casia', 'mvssnet_patch_defacto', 'mvssnet_patch_fullset',
-#     'mvssnet_resize512_casia', 'mvssnet_resize512_defacto', 'mvssnet_resize512_fullset',
-#     'mvssnet_resize1024_casia', 'mvssnet_resize1024_defacto', 'mvssnet_resize1024_fullset'
-# ]
 types = [
-    'test_img', 'groundtruth',
-    'crcnn_448', 'gsrnet_448', 'mantranet448','mvssnet_casiav2_448','mvssnet_defacto_448', 'mvssnet_ps_448', 'mvssnet_fullset_448',
-    'crcnn_512', 'gsrnet_512', 'mantranet512','mvssnet_casiav2_512','mvssnet_defacto_512', 'mvssnet_ps_512', 'mvssnet_fullset_512'
+    'tampered', 'ori', 'mask', 'tradition',
+    'mvssnet_patch_casia', 'mvssnet_patch_defacto', 'mvssnet_patch_fullset',
+    'mvssnet_resize512_casia', 'mvssnet_resize512_defacto', 'mvssnet_resize512_fullset',
+    'mvssnet_resize1024_casia', 'mvssnet_resize1024_defacto', 'mvssnet_resize1024_fullset'
 ]
-pickel_path = '/data_activate/dongchengbo/ps_img_mask_pd.pkl'
+# types = [
+#     'test_img', 'groundtruth',
+#     'crcnn_448', 'gsrnet_448', 'mantranet448','mvssnet_casiav2_448','mvssnet_defacto_448', 'mvssnet_ps_448', 'mvssnet_fullset_448',
+#     'crcnn_512', 'gsrnet_512', 'mantranet512','mvssnet_casiav2_512','mvssnet_defacto_512', 'mvssnet_ps_512', 'mvssnet_fullset_512'
+# ]
+pickel_path = '/data_activate/dongchengbo/img_ori_mask_pd.pkl'
+    #'/data_activate/dongchengbo/ps_img_mask_pd.pkl'
 #'/data_activate/dongchengbo/img_ori_mask_pd.pkl'
 # urls = [
 #     '/', 'index',
