@@ -2,21 +2,20 @@ $def with (resp)
 
 $def result_to_table(resp, row_num=15):
     <table style="margin:auto; width:80%;">
+    $ list = ['test_img', 'mask', 'crcnn_448','crcnn_512', 'gsrnet_448', 'gsrnet_512','mantranet448','mantranet512', 'mvssnet_casiav2_448','mvssnet_casiav2_512','mvssnet_defacto_448','mvssnet_defacto_512', 'mvssnet_ps_448', 'mvssnet_ps_512','mvssnet_fullset_448','mvssnet_fullset_512']
     $ config = resp['config']
     $ reslist = resp['content']
     $ col_num = config['columns']
     $ index = 0
-    $for i in range(row_num):
-        <tr>
-        $for j, source in enumerate(['test_img', 'groundtruth', 'crcnn_448', 'gsrnet_448', 'mantranet448','mvssnet_casiav2_448','mvssnet_defacto_448', 'mvssnet_ps_448', 'mvssnet_fullset_448', 'crcnn_512', 'gsrnet_512', 'mantranet512','mvssnet_casiav2_512','mvssnet_defacto_512', 'mvssnet_ps_512', 'mvssnet_fullset_512']):
-            $ index = i
-            $if index>=len(reslist):
-                $break
+    $for i in range(4):
+        $for j in range(4):
+            $ index = 0
+            $ source = list[i*4+j]
             $ imageid = reslist[index]['id']
             $ url = '/%s/%s' % (source,imageid)
             $ color = 'white'
             $ dis = source
-            $if j == 0:
+            $if i*4+j == 0:
                 $ dis = reslist[index]['id']
 
             <td style="vertical-align:top;"><img src="$url" width=$config['img_size'] style="border:5px solid $color"></img>

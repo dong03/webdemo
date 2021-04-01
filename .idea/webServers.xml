@@ -9,6 +9,13 @@
           </advancedOptions>
         </fileTransfer>
       </webServer>
+      <webServer id="d7154566-d5ff-47e2-a8f1-a8430707345e" name="webdemo2">
+        <fileTransfer rootFolder="/data_activate/dongchengbo/" accessType="SFTP" host="hz.newsverify.com" port="22" sshConfigId="fc9d7c28-60c3-4b17-8b59-38e367305eb1" sshConfig="dongchengbo@hz.newsverify.com:22 password">
+          <advancedOptions>
+            <advancedOptions controlEncoding="utf-8" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>
