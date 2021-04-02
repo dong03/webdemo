@@ -8,19 +8,28 @@ $def result_to_table(resp, row_num=15):
     $ col_num = config['columns']
     $ index = 0
     $for i in range(4):
-        $for j in range(4):
+        $for j in range(5):
             $ index = 0
-            $ source = list[i*4+j]
             $ imageid = reslist[index]['id']
+            $if i == 0:
+                $ source = list[i]
+                $ dis = reslist[index]['id']
+                $ url = '/%s/%s' % (source,imageid)
+                $ color = 'white'
+                <td style="vertical-align:top;"><img src="$url" width=$config['img_size'] style="border:5px solid $color"></img>
+                <div>$dis</div>
+                </td>
+                $break
+            $else:
+                $ source = list[(i-1)*5+j+1]
+                $ dis = source
             $ url = '/%s/%s' % (source,imageid)
             $ color = 'white'
-            $ dis = source
-            $if i*4+j == 0:
-                $ dis = reslist[index]['id']
 
             <td style="vertical-align:top;"><img src="$url" width=$config['img_size'] style="border:5px solid $color"></img>
             <div>$dis</div>
             </td>
+
         </tr>
     </table>
 

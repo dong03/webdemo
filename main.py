@@ -23,7 +23,7 @@ from images import *
 #     'mvssnet_resize1024_casia','mvssnet_resize1024_defacto','mvssnet_resize1024_fullset'
 # ]
 # types = [
-#     'test_img', 'ori', 'mask', 'tradition',
+#     'test_img', 'mask', 'tradition',
 #     'mvssnet_patch_casia', 'mvssnet_patch_defacto', 'mvssnet_patch_fullset',
 #     'mvssnet_resize512_casia', 'mvssnet_resize512_defacto', 'mvssnet_resize512_fullset',
 #     'mvssnet_resize1024_casia', 'mvssnet_resize1024_defacto', 'mvssnet_resize1024_fullset'
