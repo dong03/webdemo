@@ -9,7 +9,7 @@ $def result_to_table(resp, row_num=15):
     $for i in range(row_num):
         <tr>
 
-        $for j, source in enumerate(['tampered', 'ori', 'mask', 'tradition','mvssnet_patch_casia', 'mvssnet_patch_defacto', 'mvssnet_patch_fullset','mvssnet_resize512_casia', 'mvssnet_resize512_defacto', 'mvssnet_resize512_fullset', 'mvssnet_resize1024_casia', 'mvssnet_resize1024_defacto', 'mvssnet_resize1024_fullset']):
+        $for j, source in enumerate(['ori','seen','seen_mask','unseen','unseen_mask']):
             $ index = i
             $if index>=len(reslist):
                 $break
