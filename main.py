@@ -5,16 +5,6 @@ import pickle
 import pdb
 from images import *
 
-# urls = (
-#     '/', 'index',
-#     '/search', 'ImageSearch',
-#     '/images/(.*)', 'images',
-#     '/gradcams/(.*)', 'gradcams',
-#     '/gradcampps/(.*)', 'gradcampps',
-#     '/rawimg/(.*)', 'rawimg',
-#     '/img/(.*)', 'images',
-
-
 # )
 # types = [
 #     'ori','mask','tradition',
@@ -22,38 +12,19 @@ from images import *
 #     'mvssnet_resize512_casia','mvssnet_resize512_defacto','mvssnet_resize512_fullset',
 #     'mvssnet_resize1024_casia','mvssnet_resize1024_defacto','mvssnet_resize1024_fullset'
 # ]
-types = [
-    'tampered', 'ori', 'mask', 'tradition',
-    'mvssnet_patch_casia', 'mvssnet_patch_defacto', 'mvssnet_patch_fullset',
-    'mvssnet_resize512_casia', 'mvssnet_resize512_defacto', 'mvssnet_resize512_fullset',
-    'mvssnet_resize1024_casia', 'mvssnet_resize1024_defacto', 'mvssnet_resize1024_fullset'
-]
+# types = [
+#     'tampered', 'ori', 'mask', 'tradition',
+#     'mvssnet_patch_casia', 'mvssnet_patch_defacto', 'mvssnet_patch_fullset',
+#     'mvssnet_resize512_casia', 'mvssnet_resize512_defacto', 'mvssnet_resize512_fullset',
+#     'mvssnet_resize1024_casia', 'mvssnet_resize1024_defacto', 'mvssnet_resize1024_fullset'
+# ]
+types = ['ori','seen','seen_mask','unseen','unseen_mask']
 # types = [
 #     'test_img', 'groundtruth',
 #     'crcnn_448', 'gsrnet_448', 'mantranet448','mvssnet_casiav2_448','mvssnet_defacto_448', 'mvssnet_ps_448', 'mvssnet_fullset_448',
 #     'crcnn_512', 'gsrnet_512', 'mantranet512','mvssnet_casiav2_512','mvssnet_defacto_512', 'mvssnet_ps_512', 'mvssnet_fullset_512'
 # ]
-pickel_path = '/data_activate/dongchengbo/img_ori_mask_pd.pkl'
-    #'/data_activate/dongchengbo/ps_img_mask_pd.pkl'
-#'/data_activate/dongchengbo/img_ori_mask_pd.pkl'
-# urls = [
-#     '/', 'index',
-#     '/search', 'ImageSearch',
-#     '/tampered/(.*)', 'tampered',
-#     '/ori/(.*)', 'ori',
-#     '/mask/(.*)', 'mask',
-#     '/tradition/(.*)', 'tradition',
-#     '/mvssnet_patch_casia/(.*)', 'mvssnet_patch_casia',
-#     '/mvssnet_patch_defacto/(.*)', 'mvssnet_patch_defacto',
-#     '/mvssnet_patch_fullset/(.*)', 'mvssnet_patch_fullset',
-#     '/mvssnet_resize512_casia/(.*)', 'mvssnet_resize512_casia',
-#     '/mvssnet_resize512_defacto/(.*)', 'mvssnet_resize512_defacto',
-#     '/mvssnet_resize512_fullset/(.*)', 'mvssnet_resize512_fullset',
-#     '/mvssnet_resize1024_casia/(.*)', 'mvssnet_resize1024_casia',
-#     '/mvssnet_resize1024_defacto/(.*)', 'mvssnet_resize1024_defacto',
-#     '/mvssnet_resize1024_fullset/(.*)', 'mvssnet_resize1024_fullset',
-#
-# ]
+pickel_path = '/data_activate/dongchengbo/cocovdcb_ori_sen_unseen_mask.pkl'
 
 urls = [
     '/', 'index',
@@ -122,60 +93,19 @@ if __name__ == "__main__":
     gradcam_dir = os.path.join(pred_dir, 'gradcam')
 
     for img_ in img_ori_mask_pd:
-        img_id = os.path.split(img_)[1].split('.')[0]
-        #img_id = img_
+        #img_id = os.path.split(img_)[1].split('.')[0]
+        img_id = str(img_)
         temp = img_ori_mask_pd[img_]
-        #web.img2info[img_id] = {'tampered':img_}
-        # keys = ['test_img']
-        # values = [img_]
         values = []
         keys = []
         for i in range(len(types)):
             values.append(temp[i])
             keys.append(types[i])
         web.img2info[img_id] = dict(zip(keys,values))
-        #
-        # for i in range(len(temp)):
-        #     web.img2info[img_id][types[i]] = temp[i]
 
-        # ori, mask, tradition, \
-        # mvssnet_patch_casia, mvssnet_patch_defacto, mvssnet_patch_fullset, \
-        # mvssnet_resize512_casia, mvssnet_resize512_defacto, mvssnet_resize512_fullset, \
-        # mvssnet_resize1024_casia, mvssnet_resize1024_defacto, mvssnet_resize1024_fullset = img_ori_mask_pd[img_]
-        #
-        # web.img2info[img_id] = {
-        #     'tampered':img_,
-        #     'ori':ori,
-        #     'mask':mask,
-        #     'tradition':tradition,
-        #     'mvssnet_patch_casia':mvssnet_patch_casia,
-        #     'mvssnet_patch_defacto':mvssnet_patch_defacto,
-        #     'mvssnet_patch_fullset':mvssnet_patch_fullset,
-        #     'mvssnet_resize512_casia':mvssnet_resize512_casia,
-        #     'mvssnet_resize512_defacto':mvssnet_resize512_defacto,
-        #     'mvssnet_resize512_fullset':mvssnet_resize512_fullset,
-        #     'mvssnet_resize1024_casia':mvssnet_resize1024_casia,
-        #     'mvssnet_resize1024_defacto':mvssnet_resize1024_defacto,
-        #     'mvssnet_resize1024_fullset': mvssnet_resize1024_fullset
-        # }
-
-    # for line in open(pred_file).readlines():
-    #     img_path, pred, score = line.strip().split()
-    #     pred = int(pred)
-    #     score = float(score)
-    #     img_id = os.path.split(img_path)[-1]
-    #     gradcam_path = os.path.join(gradcam_dir, 'cam_%s' % img_id)
-    #     gradcampp_path = os.path.join(gradcam_dir, 'campp_%s' % img_id)
-    #     web.img2info[img_id] = {'img_path':img_path, 'rawimg':img_path.replace('_retina_face','').replace('retinaface', ''), 'gradcam': gradcam_path, 'gradcampp': gradcampp_path, 'pred':pred, 'score':score}
-    #
     web.img2gt = {}
-    # if os.path.exists(anno_file):
-    #     for line in open(anno_file).readlines():
-    #         img_path, label = line.strip().split()
-    #         img_id = os.path.split(img_path)[-1]
-    #         web.img2gt[img_id] = int(label)
-            
     for img_ in img_ori_mask_pd:
-        web.img2gt[img_] = 1
+        img_id = str(img_)
+        web.img2gt[img_id] = 1
     print ('nr of images: {}'.format(len(web.img2info)))
     app.run()

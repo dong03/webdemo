@@ -155,6 +155,26 @@ class ori(images):
         img_path = web.img2info[name]['ori']
         return img_path
 
+class seen(images):
+    def get_local(self, name):
+        img_path = web.img2info[name]['seen']
+        return img_path
+
+class seen_mask(images):
+    def get_local(self, name):
+        img_path = web.img2info[name]['seen_mask']
+        return img_path
+
+class unseen(images):
+    def get_local(self, name):
+        img_path = web.img2info[name]['unseen']
+        return img_path
+
+class unseen_mask(images):
+    def get_local(self, name):
+        img_path = web.img2info[name]['unseen_mask']
+        return img_path
+
 class mask(images):
     def get_local(self, name):
         img_path = web.img2info[name]['mask']
